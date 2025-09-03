@@ -3,6 +3,20 @@ using namespace std;
 
 #define int long long
 
+ll binpowItr(ll a, ll x, ll p)  //(a^x)%p
+{
+  ll n, ans = 1;
+  // prod= (a^(2^p1))
+  while (x) {
+    if (x % 2) {
+      ans = ((ans % p) * (a % p)) % p;
+    }
+    a = ((a % p) * (a % p)) % p;
+    x = x / 2;
+  }
+  return ans;
+}
+
 int binpow(int a,int b,int m){
     if(b==0)return 1;
     if(b%2==1){
