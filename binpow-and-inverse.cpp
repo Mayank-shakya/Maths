@@ -75,7 +75,7 @@ signed main(){
 // Function to compute power of prime p in n!
 int powerOfPInFactorial(int n, int p) { // O(log_p(n)) 
     int count = 0; 
-    while (n >= p) {
+    while (n >0) {
         count += n / p; // count multiples of p, p^2, p^3, ...
         n /= p;
     }
