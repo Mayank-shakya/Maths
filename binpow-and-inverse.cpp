@@ -68,3 +68,35 @@ signed main(){
         solve();
     }
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+// Function to compute power of prime p in n!
+int powerOfPInFactorial(int n, int p) { // O(log_p(n)) 
+    int count = 0; 
+    while (n >= p) {
+        count += n / p; // count multiples of p, p^2, p^3, ...
+        n /= p;
+    }
+    return count; // total count of prime p in n!
+}
+
+// Example usage
+int main() {
+    int n, p;
+    cin >> n >> p;
+    cout << powerOfPInFactorial(n, p) << "\n";
+}
+
+/*
+Notes:
+- Formula: power of prime p in n! = floor(n/p) + floor(n/p^2) + floor(n/p^3) + ...
+- Each term counts how many multiples of p, p^2, p^3, ... contribute to the factorial.
+- Time Complexity: O(log_p(n))  (since n gets divided by p each loop).
+- Use Cases:
+    - Counting trailing zeros (use p=5 for base 10, combine with p=2).
+    - Factorization of n! in competitive programming / combinatorics.
+- Works up to n ~ 1e9 easily.
+*/
+///////////////////////////////////////////////////////////////////////////////////////////////////
