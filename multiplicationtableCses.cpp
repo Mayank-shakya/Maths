@@ -19,7 +19,7 @@ const long long N=1e17+9;
 
 void solve() {
   int n;cin>>n;
-  int k=(n*n)/2;
+  int k=(n*n+1)/2;
 
 
 
@@ -30,10 +30,10 @@ auto f=[&](int m)->bool{
 
   int totel=0;
 
-  for(int ro=0;ro<n;ro++){
-    ro++;// 1 based
+  for(int ro=1;ro<=n;ro++){
+    
 
-    int noOfelemInthisRow=m/ro;
+    int noOfelemInthisRow=min(n,m/ro);
     totel+=noOfelemInthisRow;
 
     if(totel>=k)return 1;
