@@ -12,22 +12,14 @@ using namespace std;
 const int M=1e9+7;
 const long long N=1e17+9;
 
-int D;
+ int dis;
+int fq[1000004];
 
-struct DS{
-
-    int dis;
-    int fq[1001000];
-
-    
-    DS(){
-        dis = 0;
-        memset(fq, 0, sizeof(fq));///
-    }
-
-
-
-    void add(int x){
+void pr(){
+    dis=0;
+    memset(fq, 0, sizeof(fq));
+}
+void add(int x){
         fq[x]++;
         if(fq[x]==1)dis++;
     }
@@ -36,29 +28,30 @@ struct DS{
         if(fq[x]==0)dis--;
     }
 
-    bool can(int h1,int t){
-        return h1-t+1<=D;
-    }
-
     int get(){
         return dis;
     }
 
-};
 
 void solve() {
+    
+     
   int n,d;
   cin>>n>>d;
   vector<int>v(n);
   for(auto &i:v)cin>>i;
-D=d;
+
   int ans=n;
-  DS ds;
+ 
 
   for(int i=0;i<n;i++){
-    ds.add(v[i]);
-    if(i-d>=0)ds.rem(v[i-d]);///
-    if(i>=d-1)ans=min(ans,ds.get());///
+    add(v[i]);
+    if(i-d>=0)rem(v[i-d]);///
+    if(i>=d-1)ans=min(ans,get());///
+  }
+
+  for(int i=n-d;i<n;i++){
+    rem(v[i]);///
   }
 
 
@@ -100,6 +93,8 @@ D=d;
 signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);cout.tie(0);
+
+    pr();
     
     int _t=1;
     cin >> _t;
