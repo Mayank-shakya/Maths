@@ -33,17 +33,14 @@ void solve() {
     deque<int>dq;
     dq.push_back(1);
     dis[1]=0;
-// vis[1]=1;
+
     while(dq.size()){
         auto nn=dq.front();dq.pop_front();
 
         for(auto it:adj[nn]){
             int nb=it.F,wt=it.S;
-
             if(dis[nb]>dis[nn]+wt){
-                // vis[nb]=1;
                 dis[nb]=dis[nn]+wt;
-                
                 if(wt==0){
                     dq.push_front(nb);
                 }else{
@@ -52,6 +49,8 @@ void solve() {
             }
 
         }
+
+        
     }
 
     if(dis[n]==M){
